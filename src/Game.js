@@ -10,11 +10,10 @@ class Game {
   constructor(thisRound) {
     this.currentRound = thisRound;
   }
-  start() {
-    const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(12, 'What is Travis\'s favorite stress reliever?', ['listening to music', 'watching Netflix', 'playing with bubble wrap'], 'playing with bubble wrap');
-    const deck = new Deck([card1, card2, card3]);
+  start(cards) {
+    const stack = []
+    prototypeQuestions.forEach(element => stack.push(element));
+    const deck = new Deck(stack);
     const round = new Round(deck);
     const game = new Game(round);
     this.printMessage(deck, round)

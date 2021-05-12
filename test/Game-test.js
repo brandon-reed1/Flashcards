@@ -30,8 +30,7 @@ describe('Game', () => {
     expect(game.currentRound).to.deep.equal(round);
   }); 
 
-  it.skip('start method creates cards, puts cards in deck, creates a new Round using the Deck, and invokes printMessage & printQuestion', () => {
-    const game = new Game();
-    game.start();
+  it('start method creates cards, puts cards in deck, creates a new Round using the Deck, and invokes printMessage & printQuestion', () => {
+    game.start(deck);
   }); 
 });
