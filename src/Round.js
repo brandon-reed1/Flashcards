@@ -38,6 +38,7 @@ class Round {
     if (this.deck.length) {
       return `There are still cards left in the round!`
     } else {
+      console.log(`** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(0)}% of the questions correctly!`)
       return `** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(0)}% of the questions correctly!`
     }
   }
