@@ -10,7 +10,9 @@ describe('Turn', () => {
 
   let card, turn
   beforeEach(() => {
-    card = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    card = new Card(1, 'What is Robbie\'s favorite animal', 
+      ['sea otter', 'pug', 'capybara'], 'sea otter');
+    
     turn = new Turn('sea otter', card);
   })
 
@@ -38,25 +40,25 @@ describe('Turn', () => {
     expect(turn.returnCard()).to.equal(card);
   });  
 
-  it('evaluateGuess should be a method that returns true if the user\'s guess matches the correct answer', () => {
+  it('evaluateGuess returns true if the user\'s guess is the correct answer', () => {
     expect(turn.evaluateGuess()).to.equal(true);
     expect(turn.evaluateGuess()).to.be.boolean();
   });  
 
-  it('evaluateGuess should be a method that returns false if the user\'s guess does not match the correct answer', () => {
+  it('evaluateGuess returns false if the user\'s guess is not the correct answer', () => {
     const turn2 = new Turn('kittens', card);
     expect(turn2.evaluateGuess()).to.not.equal(true);
     expect(turn2.evaluateGuess()).to.equal(false);
     expect(turn2.evaluateGuess()).to.be.boolean();
   });  
 
-  it('giveFeedback should be a method that returns a string if there\'s a correct answer', () => {
+  it('giveFeedback returns a string if there\'s a correct answer', () => {
     turn.evaluateGuess();
     expect(turn.giveFeedback(true)).to.equal('correct!');
     expect(turn.giveFeedback(false)).to.not.equal('correct!');
   });  
 
-  it('giveFeedback should be a method that returns a string if there\'s a correct answer', () => {
+  it('giveFeedback returns a string if there\'s an incorrect answer', () => {
     const turn2 = new Turn('kittens', card);
     turn2.evaluateGuess();
     expect(turn2.giveFeedback()).to.equal('incorrect!');

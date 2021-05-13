@@ -9,9 +9,16 @@ describe('Round', () => {
 
   let card1, card2, card3, deck, round
   beforeEach(() => {
-    card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter')
-    card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder')
-    card3 = new Card(12, 'What is Travis\'s favorite stress reliever?', ['listening to music', 'watching Netflix', 'playing with bubble wrap'], 'playing with bubble wrap')
+    card1 = new Card(1, 'What is Robbie\'s favorite animal', 
+      ['sea otter', 'pug', 'capybara'], 'sea otter')
+    
+    card2 = new Card(14, 'What organ is Khalid missing?', 
+      ['spleen', 'appendix', 'gallbladder'], 'gallbladder')
+    
+    card3 = new Card(12, 'What is Travis\'s favorite stress reliever?', 
+      ['listening to music', 'watching Netflix', 'playing with bubble wrap'], 
+      'playing with bubble wrap')
+    
     deck = new Deck([card1, card2, card3])
     round = new Round(deck)
   })
@@ -28,7 +35,7 @@ describe('Round', () => {
     expect(round.deck).to.deep.equal([card1, card2, card3]);
   }); 
 
-  it('currentCard should be the first Card in the Deck (the array of Cards) at the start of the Round', () => {
+  it('currentCard should be the first Card in the Deck at the start of the Round', () => {
     expect(round.currentCard).to.deep.equal(card1);
   });
 
@@ -36,7 +43,7 @@ describe('Round', () => {
     expect(round.returnCurrentCard()).to.deep.equal(card1);
   }); 
 
-  it('takeTurn: method that updates turns count, evaluates guesses, gives feedback, and stores ids of incorrect guesses', () => {
+  it('takeTurn updates turns count, evaluates guesses, gives feedback, and stores ids of incorrect guesses', () => {
     expect(round.returnCurrentCard()).to.deep.equal(card1);
     expect(round.turns).to.deep.equal(0);
     
@@ -51,7 +58,7 @@ describe('Round', () => {
     expect(round.incorrectGuesses).to.deep.equal([card2.id]);
   }); 
 
-  it('calculatePercentCorrect calculates and returns the percentage of correct guesses', () => {
+  it('calculatePercentCorrect returns the percentage of correct guesses', () => {
     expect(round.calculatePercentCorrect()).to.deep.equal(`You haven't made a guess yet!`);
     
     expect(round.takeTurn('sea otter')).to.equal('correct!');
@@ -61,7 +68,7 @@ describe('Round', () => {
     expect(round.calculatePercentCorrect()).to.deep.equal(50);
   }); 
 
-  it('endRound prints a string with stats to the console', () => {
+  it('endRound logs stats to the console', () => {
     expect(round.takeTurn('sea otter')).to.equal('correct!');
     expect(round.takeTurn('spleen')).to.equal('incorrect!');
     expect(round.endRound()).to.deep.equal(`There are still cards left in the round!`);
