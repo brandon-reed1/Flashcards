@@ -16,11 +16,11 @@ class Game {
     this.printQuestion(game)
   }
   printMessage(deck) {
-      console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
+    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
   printQuestion(game) {
-      util.main(game);
+    util.main(game);
   }
 }
 
