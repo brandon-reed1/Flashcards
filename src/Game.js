@@ -14,16 +14,30 @@ class Game {
     const deck = new Deck(stack);
     const round = new Round(deck);
     const game = new Game(round);
-    this.printMessage(deck, round)
+    this.printMessage(deck)
     this.printQuestion(round)
+    // this.printQuestion(game)
   }
-  printMessage(deck, round) {
+  printMessage(deck) {
       console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
   printQuestion(round) {
-      util.main(round);
-  }
+    util.main(round);
+}
+  // printQuestion(game) {
+  //     util.main(game);
+  // }
+  // makeDeckFromIDs(game) {
+  //   const incorrectStack = []
+  //   game.currentRound.incorrectGuesses.forEach(guess =>
+  //     game.currentRound.deck.stack.forEach(card =>
+  //       if (card.id.includes(guess)) {
+  //         incorrectStack.push(game.currentRound.deck.stack.card)
+  //       }
+  //     );
+  //   );
+  // }
 }
 
 module.exports = Game;
