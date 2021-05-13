@@ -1,5 +1,3 @@
-const data = require('./data');
-const prototypeQuestions = data.prototypeData;
 const util = require('./util');
 
 const Round = require('../src/Round');
@@ -12,7 +10,7 @@ class Game {
   }
   start(cards) {
     const stack = []
-    prototypeQuestions.forEach(element => stack.push(element));
+    cards.forEach(element => stack.push(element));
     const deck = new Deck(stack);
     const round = new Round(deck);
     const game = new Game(round);
