@@ -10,7 +10,7 @@ class Game {
   }
   start(cards) {
     const stack = []
-    cards.forEach(element => stack.push(element));
+    cards.forEach(card => stack.push(card));
     const deck = new Deck(stack);
     const round = new Round(deck);
     const game = new Game(round);
