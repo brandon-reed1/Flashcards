@@ -52,7 +52,8 @@ describe('Turn', () => {
 
   it('giveFeedback should be a method that returns a string if there\'s a correct answer', () => {
     turn.evaluateGuess();
-    expect(turn.giveFeedback()).to.equal('correct!');
+    expect(turn.giveFeedback(true)).to.equal('correct!');
+    expect(turn.giveFeedback(false)).to.not.equal('correct!');
   });  
 
   it('giveFeedback should be a method that returns a string if there\'s a correct answer', () => {
