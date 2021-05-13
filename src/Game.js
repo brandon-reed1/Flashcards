@@ -15,28 +15,27 @@ class Game {
     const round = new Round(deck);
     const game = new Game(round);
     this.printMessage(deck)
-    this.printQuestion(round)
-    // this.printQuestion(game)
+    // this.printQuestion(round)
+    this.printQuestion(game)
   }
   printMessage(deck) {
       console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
-  printQuestion(round) {
-    util.main(round);
-}
-  // printQuestion(game) {
-  //     util.main(game);
-  // }
+//   printQuestion(round) {
+//     util.main(round);
+// }
+  printQuestion(game) {
+      util.main(game);
+  }
   // makeDeckFromIDs(game) {
-  //   const incorrectStack = []
-  //   game.currentRound.incorrectGuesses.forEach(guess =>
-  //     game.currentRound.deck.stack.forEach(card =>
-  //       if (card.id.includes(guess)) {
-  //         incorrectStack.push(game.currentRound.deck.stack.card)
-  //       }
-  //     );
-  //   );
+  //   const incorrectStack = game.currentRound.deck.reduce((acc, item) => {
+  //     if(game.currentRound.incorrectGuesses.includes(item.id)){
+  //       acc.push(item)
+  //     }
+  //     return acc;
+  //   }, [])
+  //   game.start(incorrectStack)
   // }
 }
 
