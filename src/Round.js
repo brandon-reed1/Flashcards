@@ -20,11 +20,11 @@ class Round {
     const turn = new Turn(guess, this.currentCard);
     if (guess === this.currentCard.correctAnswer) {
       this.currentCard = this.deck[0];
-      return `correct!`
+      return turn.giveFeedback(true)
     } else {
       this.incorrectGuesses.push(this.currentCard.id)
       this.currentCard = this.deck[0];
-      return `incorrect!`
+      return turn.giveFeedback(false)
     }
   }
   calculatePercentCorrect() {
@@ -38,6 +38,7 @@ class Round {
     if (this.deck.length) {
       return `There are still cards left in the round!`
     } else {
+      console.log(`** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(0)}% of the questions correctly!`)
       return `** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(0)}% of the questions correctly!`
     }
   }
