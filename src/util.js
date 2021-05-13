@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
 
-const genList = (round) => {
-  let card = round.returnCurrentCard();
-  
+const genList = (game) => {
+  let card = game.currentRound.returnCurrentCard();
   let choices = card.answers.map((answer, index) => {
     return {
       key: index,
@@ -21,26 +22,45 @@ const getRound = (round) => {
   return Promise.resolve(round);
 }
 
-const confirmUpdate = (id, round) => {
-  const feedback = round.takeTurn(id);
+const confirmUpdate = (id, game) => {
+  const feedback = game.currentRound.takeTurn(id);
   return {
     name: 'feedback',
     message: `Your answer of ${id} is ${feedback}`
   }
 }
 
-async function main(round) {
+async function main(game) {
 
-  const currentRound = await getRound(round);
+  const currentRound = await getRound(game);
   const getAnswer = await inquirer.prompt(genList(currentRound));
-  const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
+  const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, game));
 
-    if(!round.returnCurrentCard()) {
-      round.endRound();
-      process.exit(1)
+    if(!game.currentRound.returnCurrentCard()) {
+      determineRestart(game)
     } else {
-      main(round);
+      main(game);
     }
+}
+
+function determineRestart(game) {
+  if (game.currentRound.calculatePercentCorrect() < 90) {
+    console.log('You didn\'t make it to 90%. Time to redo the cards you missed.')
+    makeDeckFromIDs(game)
+  } else {
+    game.currentRound.endRound();
+    process.exit(1)
+  }
+}
+
+function makeDeckFromIDs(game) {
+  const incorrectStack = prototypeQuestions.reduce((acc, item) => {
+    if(game.currentRound.incorrectGuesses.includes(item.id)){
+      acc.push(item)
+    }
+    return acc;
+  }, [])
+  game.start(incorrectStack)
 }
 
 module.exports.main = main;
