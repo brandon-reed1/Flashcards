@@ -20,11 +20,11 @@ class Round {
     const turn = new Turn(guess, this.currentCard);
     if (guess === this.currentCard.correctAnswer) {
       this.currentCard = this.deck[0];
-      return `correct!`
+      return turn.giveFeedback(true)
     } else {
       this.incorrectGuesses.push(this.currentCard.id)
       this.currentCard = this.deck[0];
-      return `incorrect!`
+      return turn.giveFeedback(false)
     }
   }
   calculatePercentCorrect() {
