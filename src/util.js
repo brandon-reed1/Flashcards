@@ -45,6 +45,7 @@ async function main(game) {
 
 function determineRestart(game) {
   if (game.currentRound.calculatePercentCorrect() < 90) {
+    game.currentRound.endRound();
     console.log('You didn\'t make it to 90%. Time to redo the cards you missed.')
     makeDeckFromIDs(game)
   } else {
