@@ -37,15 +37,10 @@ describe('Game', () => {
     expect(game.currentRound).to.deep.equal(round);
   }); 
 
-  it.skip('start creates cards, puts cards in deck, creates a new Round using the Deck, and invokes printMessage & printQuestion', () => {
-    game.start(deck);
-    // expect(game.currentRound.deck.stack[0]).to.equal(card1)
-    // expect(game.currentRound.deck.stack).to.deep.equal([card1, card2, card3]);
-    // expect(game.currentRound.deck).to.deep.equal([card1, card2, card3]);
-    // expect(game.currentRound).to.deep.equal(round);
-  }); 
-
-  it.skip('this is just a test', () => {
-    game.makeDeckFromIDs(game)
+  it('start creates cards, puts cards in deck, creates a new Round using the Deck, and invokes printMessage & printQuestion', () => {
+    game.start(deck.stack);
+    expect(game.currentRound.deck[0]).to.equal(card1)
+    expect(game.currentRound.deck).to.deep.equal([card1, card2, card3]);
+    expect(game.currentRound).to.deep.equal(round);
   }); 
 });
