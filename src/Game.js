@@ -7,17 +7,17 @@ class Game {
     this.currentRound = thisRound;
   }
   start(cards) {
-    const stack = []
+    const stack = [];
     cards.forEach(card => stack.push(card));
     const deck = new Deck(stack);
     const round = new Round(deck);
     const game = new Game(round);
-    this.printMessage(deck)
-    this.printQuestion(game)
+    this.printMessage(deck);
+    this.printQuestion(game);
   }
   printMessage(deck) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
------------------------------------------------------------------------`)
+-----------------------------------------------------------------------`);
   }
   printQuestion(game) {
     util.main(game);

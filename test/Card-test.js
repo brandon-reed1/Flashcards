@@ -5,11 +5,11 @@ const Card = require('../src/Card');
 
 describe('Card', () => {
 
-  let card
+  let card;
   beforeEach(() => {
     card = new Card(1, 'What is Robbie\'s favorite animal', 
       ['sea otter', 'pug', 'capybara'], 'sea otter');
-  })
+  });
 
   it('should be a function', () => {
     expect(Card).to.be.a('function');

@@ -4,23 +4,23 @@ class Turn {
     this.card = thisCard;
   }
   returnGuess() {
-    return this.guess
+    return this.guess;
   }
   returnCard() {
-    return this.card
+    return this.card;
   }
   evaluateGuess() {
     if (this.guess === this.card.correctAnswer) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
   giveFeedback(boolean) {
     if (boolean) {
-      return `correct!`
+      return `correct!`;
     } else {
-      return `incorrect!`
+      return `incorrect!`;
     }
   }
 }

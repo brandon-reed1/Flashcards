@@ -3,7 +3,7 @@ class Deck {
     this.stack = cards;
   }
   countCards() {
-    return this.stack.length
+    return this.stack.length;
   }
 }
 

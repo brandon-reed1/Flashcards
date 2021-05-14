@@ -14,7 +14,7 @@ describe('Turn', () => {
       ['sea otter', 'pug', 'capybara'], 'sea otter');
     
     turn = new Turn('sea otter', card);
-  })
+  });
 
   it('should be a function', () => {
     expect(Turn).to.be.a('function');
