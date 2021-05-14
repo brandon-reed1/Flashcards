@@ -15,6 +15,7 @@ class Round {
     this.turns++
     const turn = new Turn(guess, this.currentCard);
     if (guess === this.currentCard.correctAnswer) {
+      this.incorrectGuesses = this.incorrectGuesses.filter(answer => answer !== this.currentCard.id);
       this.currentCard = this.deck[0];
       return turn.giveFeedback(true)
     } else {
