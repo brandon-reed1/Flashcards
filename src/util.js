@@ -37,7 +37,7 @@ async function main(game) {
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, game));
 
     if(!game.currentRound.returnCurrentCard()) {
-      determineRestart(game)
+      determineRestart(game);
     } else {
       main(game);
     }
@@ -45,11 +45,12 @@ async function main(game) {
 
 function determineRestart(game) {
   if (game.currentRound.calculatePercentCorrect() < 90) {
+    game.currentRound.endRound();
     console.log('You didn\'t make it to 90%. Time to redo the cards you missed.')
-    makeDeckFromIDs(game)
+    makeDeckFromIDs(game);
   } else {
     game.currentRound.endRound();
-    process.exit(1)
+    process.exit(1);
   }
 }
 
@@ -59,8 +60,8 @@ function makeDeckFromIDs(game) {
       acc.push(item)
     }
     return acc;
-  }, [])
-  game.start(incorrectStack)
+  }, []);
+  game.start(incorrectStack);
 }
 
 module.exports.main = main;
